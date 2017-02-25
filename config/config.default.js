@@ -13,7 +13,7 @@ module.exports = appInfo => {
   };
 
   exports.site = {
-    host: process.env.SITE_HOST || '',
+    host: process.env.NOW_URL || '',
   };
 
   return exports;
