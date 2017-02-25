@@ -70,14 +70,13 @@ module.exports = app => {
           stargazers_count: item.stargazers_count,
           watchers_count: item.watchers_count,
         });
-
         feed.item({
-          title: item.full_name,
+          title: item.repo.full_name,
           description: html,
-          url: item.html_url,
-          guid: item.id,
-          author: item.owner.login,
-          date: item.updated_at,
+          url: item.repo.html_url,
+          guid: item.repo.id,
+          author: item.repo.owner.login,
+          date: item.starred_at,
         });
       }));
 
