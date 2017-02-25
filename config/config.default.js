@@ -12,5 +12,9 @@ module.exports = appInfo => {
     },
   };
 
+  exports.site = {
+    host: process.env.SITE_HOST || '',
+  };
+
   return exports;
 };
