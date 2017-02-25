@@ -8,14 +8,22 @@ module.exports = app => {
     constructor(ctx) {
       super(ctx);
 
-      Object.assign(this, new GitHubApi({
+      const github = new GitHubApi({
         Promise: require('bluebird'),
         timeout: 10000,
         headers: {
           accept: 'application/vnd.github.v3.star+json',
           'user-agent': `geekdada/feed-the-star v${pkg.version}`,
         },
-      }));
+      });
+
+      github.authenticate({
+        type: 'oauth',
+        key: app.config.site.githubClientId,
+        secret: app.config.site.githubClientSecret,
+      });
+
+      Object.assign(this, github);
     }
   }
 

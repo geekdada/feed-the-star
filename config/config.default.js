@@ -14,6 +14,8 @@ module.exports = appInfo => {
 
   exports.site = {
     host: process.env.SITE_URL || '',
+    githubClientId: process.env.GITHUB_CLIENT_ID || '',
+    githubClientSecret: process.env.GITHUB_CLIENT_SECRET || '',
   };
 
   return exports;
