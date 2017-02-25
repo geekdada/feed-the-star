@@ -2,7 +2,10 @@
   "name": "feed-the-star",
   "version": "0.0.1",
   "description": "Feed you with someone's Github star",
-  "dependencies": {},
+  "dependencies": {
+    "egg": "^1.0.0-rc.1",
+    "egg-view-nunjucks": "^2.0.0"
+  },
   "devDependencies": {
     "egg-bin": "^1.10.0",
     "egg-ci": "^1.1.0",
