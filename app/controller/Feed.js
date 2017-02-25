@@ -65,10 +65,10 @@ module.exports = app => {
 
       yield Promise.each(starList, co.wrap(function* (item) {
         const html = yield ctx.renderString(feedItemTemplate, {
-          description: item.description,
-          language: item.language,
-          stargazers_count: item.stargazers_count,
-          watchers_count: item.watchers_count,
+          description: item.repo.description,
+          language: item.repo.language,
+          stargazers_count: item.repo.stargazers_count,
+          watchers_count: item.repo.watchers_count,
         });
         feed.item({
           title: item.repo.full_name,
