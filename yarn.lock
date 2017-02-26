@@ -1410,6 +1410,10 @@ gauge@~2.7.1:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+gemoji@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/gemoji/-/gemoji-4.1.0.tgz#44cbed943a97598909da36c136a732c07a038486"
+
 generate-function@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/generate-function/-/generate-function-2.0.0.tgz#6858fe7c0969b7d4e9093337647ac79f60dfbe74"

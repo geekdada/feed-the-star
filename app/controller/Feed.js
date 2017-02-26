@@ -6,6 +6,7 @@ const LRU = require('lru-cache');
 const RSS = require('rss');
 const path = require('path');
 const fs = require('fs');
+const gemoji = require('gemoji');
 const feedCache = LRU({
   max: 50,
   maxAge: 10 * 60 * 100,
@@ -60,16 +61,26 @@ module.exports = app => {
         title: `${username}'s star`, // string Title of your site or feed
         feed_url: `${ctx.app.config.site.host}/${username}/rss`,
         site_url: `https://github.com/stars/${username}`,
-        ttl: 60,
       });
 
       yield Promise.each(starList, co.wrap(function* (item) {
-        const html = yield ctx.renderString(feedItemTemplate, {
-          description: item.repo.description,
-          language: item.repo.language,
-          stargazers_count: item.repo.stargazers_count,
-          watchers_count: item.repo.watchers_count,
+        let { description, language, stargazers_count, watchers_count } = item.repo;
+
+        description = description.replace(/:([\w+-]+):/g, (match, p1) => {
+          const emoji = gemoji.name[p1];
+          if (emoji) {
+            return emoji.emoji;
+          }
+          return match;
         });
+
+        const html = yield ctx.renderString(feedItemTemplate, {
+          description,
+          language,
+          stargazers_count,
+          watchers_count,
+        });
+
         feed.item({
           title: item.repo.full_name,
           description: html,
