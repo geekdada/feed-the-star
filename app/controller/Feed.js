@@ -66,13 +66,17 @@ module.exports = app => {
       yield Promise.each(starList, co.wrap(function* (item) {
         let { description, language, stargazers_count, watchers_count } = item.repo;
 
-        description = description.replace(/:([\w+-]+):/g, (match, p1) => {
-          const emoji = gemoji.name[p1];
-          if (emoji) {
-            return emoji.emoji;
-          }
-          return match;
-        });
+        if (description) {
+          description = description.replace(/:([\w+-]+):/g, (match, p1) => {
+            const emoji = gemoji.name[p1];
+            if (emoji) {
+              return emoji.emoji;
+            }
+            return match;
+          });
+        } else {
+          description = '';
+        }
 
         const html = yield ctx.renderString(feedItemTemplate, {
           description,
