@@ -10,6 +10,7 @@
     "gemoji": "^4.1.0",
     "github": "^9.0.0",
     "lru-cache": "^4.0.2",
+    "newrelic": "^1.37.2",
     "rss": "^1.2.2"
   },
   "devDependencies": {
