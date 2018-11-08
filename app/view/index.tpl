@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ title }}</title>
-</head>
-<body>
-<div id="app"></div>
-</body>
-</html>
+{% extends "./component/layout.tpl" %}
+
+{% block body %}
+<div class="index-page">
+  <h1>🌟 Feed the Star</h1>
+  <form class="input-wrapper">
+    <input type="text" required id="username" placeholder="Enter GitHub username here">
+  </form>
+  <small>
+    <a href="/geekdada/rss" target="__blank">You can subscribe my star feed here!</a>
+  </small>
+</div>
+
+<script src="/public/script.js"></script>
+{% endblock %}
