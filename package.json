@@ -5,25 +5,21 @@
   "dependencies": {
     "bluebird": "^3.4.7",
     "co": "^4.6.0",
-    "egg": "^1.0.0-rc.1",
-    "egg-view-nunjucks": "^2.0.0",
+    "egg": "^2.13.0",
+    "egg-view-nunjucks": "^2.2.0",
     "gemoji": "^4.1.0",
     "github": "^9.0.0",
     "lru-cache": "^4.0.2",
-    "newrelic": "^1.37.2",
     "rss": "^1.2.2"
   },
   "devDependencies": {
     "egg-bin": "^1.10.0",
-    "egg-ci": "^1.1.0",
     "egg-mock": "^2.0.0",
     "eslint": "^3.13.1",
-    "eslint-config-egg": "^3.2.0",
-    "supertest": "^2.0.1",
-    "webstorm-disable-index": "^1.1.2"
+    "eslint-config-egg": "^3.2.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "start": "node index.js",
