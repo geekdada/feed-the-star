@@ -1,6 +1,6 @@
 {
   "name": "feed-the-star",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Feed you with someone's Github star",
   "dependencies": {
     "bluebird": "^3.4.7",
