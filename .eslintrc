@@ -1,6 +1,16 @@
 {
-  "extends": "eslint-config-egg",
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "commonjs": true
+  },
   "rules": {
     "array-bracket-spacing": "off",
+    "camelcase": "off",
+    "global-require": "off"
   }
 }

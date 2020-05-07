@@ -1,4 +1,3 @@
-'use strict';
 
 exports.nunjucks = {
   enable: true,

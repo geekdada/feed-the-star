@@ -1,9 +1,8 @@
-'use strict';
 
-const GitHubApi = require('github');
+const GitHubApi = require('@octokit/rest');
 const pkg = require('../../package.json');
 
-module.exports = app => {
+module.exports = (app) => {
   class GitHubService extends app.Service {
     constructor(ctx) {
       super(ctx);

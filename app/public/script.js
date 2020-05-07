@@ -1,9 +1,8 @@
-'use strict';
 
-(function() {
+(function () {
   const formEl = document.querySelector('.input-wrapper');
 
-  formEl.addEventListener('submit', function(e) {
+  formEl.addEventListener('submit', (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -13,4 +12,4 @@
       window.open(`/${val.trim()}/rss`);
     }
   }, false);
-})();
+}());

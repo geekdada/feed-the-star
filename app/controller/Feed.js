@@ -1,4 +1,3 @@
-'use strict';
 
 const co = require('co');
 const Promise = require('bluebird');
@@ -7,13 +6,14 @@ const RSS = require('rss');
 const path = require('path');
 const fs = require('fs');
 const gemoji = require('gemoji');
+
 const feedCache = LRU({
   max: 50,
   maxAge: 10 * 60 * 100,
 });
 let feedItemTemplate;
 
-module.exports = app => {
+module.exports = (app) => {
   feedItemTemplate = fs.readFileSync(path.resolve(app.config.view.root[0], 'component/feedItem.tpl'), {
     encoding: 'UTF-8',
   });
@@ -31,7 +31,7 @@ module.exports = app => {
         apiResponse = yield service.github.activity.getStarredReposForUser({
           username,
           per_page: 20,
-        }).catch(err => {
+        }).catch((err) => {
           if (err.code === 404) {
             return {
               code: 404,
@@ -64,7 +64,10 @@ module.exports = app => {
       });
 
       yield Promise.each(starList, co.wrap(function* (item) {
-        let { description, language, stargazers_count, watchers_count } = item.repo;
+        let {
+          description,
+        } = item.repo;
+        const { language, stargazers_count, watchers_count } = item.repo;
 
         if (description) {
           description = description.replace(/:([\w+-]+):/g, (match, p1) => {
