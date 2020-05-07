@@ -20,7 +20,7 @@
     "eslint-config-egg": "^3.2.0"
   },
   "engines": {
-    "node": "^10"
+    "node": ">=10"
   },
   "scripts": {
     "start": "egg-scripts start",
