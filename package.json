@@ -3,21 +3,23 @@
   "version": "1.0.0",
   "description": "Feed you with someone's Github star",
   "dependencies": {
+    "@octokit/rest": "^17.8.0",
     "bluebird": "^3.4.7",
     "co": "^4.6.0",
     "egg": "^2.13.0",
     "egg-scripts": "^2.10.0",
     "egg-view-nunjucks": "^2.2.0",
-    "gemoji": "^4.1.0",
-    "github": "^9.0.0",
-    "lru-cache": "^4.0.2",
+    "gemoji": "^5.0.1",
+    "lru-cache": "^5.1.1",
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "egg-bin": "^4.9.0",
-    "egg-mock": "^2.0.0",
-    "eslint": "^3.13.1",
-    "eslint-config-egg": "^3.2.0"
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0"
   },
   "engines": {
     "node": ">=10"
@@ -30,9 +32,6 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov"
-  },
-  "ci": {
-    "version": "10"
   },
   "repository": {
     "type": "git",
