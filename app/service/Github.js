@@ -1,5 +1,6 @@
+const { Octokit } = require('@octokit/rest');
+const { createOAuthAppAuth } = require('@octokit/auth-oauth-app');
 
-const GitHubApi = require('@octokit/rest');
 const pkg = require('../../package.json');
 
 module.exports = (app) => {
@@ -7,19 +8,16 @@ module.exports = (app) => {
     constructor(ctx) {
       super(ctx);
 
-      const github = new GitHubApi({
-        Promise: require('bluebird'),
-        timeout: 10000,
-        headers: {
-          accept: 'application/vnd.github.v3.star+json',
-          'user-agent': `geekdada/feed-the-star v${pkg.version}`,
+      const github = new Octokit({
+        authStrategy: createOAuthAppAuth,
+        auth: {
+          clientId: app.config.site.githubClientId,
+          clientSecret: app.config.site.githubClientSecret,
         },
-      });
-
-      github.authenticate({
-        type: 'oauth',
-        key: app.config.site.githubClientId,
-        secret: app.config.site.githubClientSecret,
+        userAgent: `geekdada/feed-the-star/${pkg.version}`,
+        request: {
+          timeout: 10000,
+        },
       });
 
       Object.assign(this, github);

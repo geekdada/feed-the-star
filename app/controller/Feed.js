@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const gemoji = require('gemoji');
 
-const feedCache = LRU({
+const feedCache = new LRU({
   max: 50,
   maxAge: 10 * 60 * 100,
 });
@@ -28,9 +28,12 @@ module.exports = (app) => {
       if (feedCache.peek(username)) {
         starList = feedCache.get(username);
       } else {
-        apiResponse = yield service.github.activity.getStarredReposForUser({
+        apiResponse = yield service.github.request('GET /users/:username/starred', {
           username,
           per_page: 20,
+          headers: {
+            accept: 'application/vnd.github.v3.star+json',
+          },
         }).catch((err) => {
           if (err.code === 404) {
             return {
