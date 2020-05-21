@@ -5,7 +5,7 @@ const LRU = require('lru-cache');
 const RSS = require('rss');
 const path = require('path');
 const fs = require('fs');
-const gemoji = require('gemoji');
+const toEmoji = require('gemoji/name-to-emoji');
 
 const feedCache = new LRU({
   max: 50,
@@ -74,9 +74,9 @@ module.exports = (app) => {
 
         if (description) {
           description = description.replace(/:([\w+-]+):/g, (match, p1) => {
-            const emoji = gemoji.name[p1];
+            const emoji = toEmoji(p1);
             if (emoji) {
-              return emoji.emoji;
+              return emoji;
             }
             return match;
           });
