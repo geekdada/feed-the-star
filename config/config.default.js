@@ -17,5 +17,9 @@ module.exports = (appInfo) => {
     githubClientSecret: process.env.GITHUB_CLIENT_SECRET || '',
   };
 
+  exports.siteFile = {
+    '/favicon.ico': 'https://github.com/favicon.ico',
+  };
+
   return exports;
 };

@@ -74,7 +74,7 @@ module.exports = (app) => {
 
         if (description) {
           description = description.replace(/:([\w+-]+):/g, (match, p1) => {
-            const emoji = toEmoji(p1);
+            const emoji = toEmoji[p1];
             if (emoji) {
               return emoji;
             }
